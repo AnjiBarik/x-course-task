@@ -1,0 +1,12 @@
+.wrapper{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+a {
+    color: black;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px white;
+  }

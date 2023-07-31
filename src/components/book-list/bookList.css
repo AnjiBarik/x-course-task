@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    width: 100%;
+}
+
+.view-btn,
+#sortPrice {
+    cursor: pointer;
+}
+
+.book-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.book{
+    width: 20vw;
+    border: 1px solid rgb(155, 155, 155);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 30px 10px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 5px;
+    min-width: 300px; 
+    padding: 20px;
+}
+
+.book-img img{
+    margin: 0 auto;
+}
+
+.book-price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.view-btn {
+    height: 35px;
+    min-width:  12vw;
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid rgb(119, 118, 118);
+    border-radius: 7px;
+    background-color: rgb(241, 241, 241);
+}
+
+.book-text{
+    overflow: hidden;
+    text-overflow: ellipsis ellipsis;
+}
+
+.filters{
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 30px 10px 10px 1px;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+#searchName{
+    border: 1px solid gray;
+    height: 40px;
+    font-size: 20px;
+    margin:3px 10px ;
+   
+}
+
+.thembutton{
+    border-radius: 50%;
+    border: 5px solid gray;   
+    margin:3px 10px ;
+}
+#sortPrice{
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 20px;
+    margin:3px 10px ;
+}
+.book-img{
+    margin: 0 auto;
+}
+
+
+.light {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+.dark {
+    background-color: #333;
+    color: #fff;
+    background-image: linear-gradient(320deg, #473515 0, #433614 4.55%, #3f3814 9.09%, #3b3915 13.64%, #363a16 18.18%, #313c18 22.73%, #2c3d1b 27.27%, #263e1e 31.82%, #203e22 36.36%, #1a3f26 40.91%, #12402a 45.45%, #07402f 50%, #004034 54.55%, #004038 59.09%, #00413d 63.64%, #004042 68.18%, #004046 72.73%, #00404a 77.27%, #00404e 81.82%, #003f52 86.36%, #003e54 90.91%, #003d57 95.45%, #003c59 100%);
+
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #1e7f1e, #007a00); 
+  border: none;
+  color: #fff; 
+  text-align: center;
+  text-decoration: none;
+ 
+  border-radius: 25px; 
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.2);
+}
+
+  .custom-element {
+    border-radius: 10px; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+  
+ 
+  .custom-element:hover {
+    transform: scale(1.03); 
+    box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.3); 
+}
+ 
+  .custom-element:active {
+    box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.4); 
+}

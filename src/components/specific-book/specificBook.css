@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    width: 100%;
+}
+
+.price-block-btn{
+    cursor: pointer;
+}
+
+.book-page{
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+figure, .about, .price-block{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-basis: 33.33%; /* Розмір секції на 33.33% ширини контейнера (3 секції в ряд) */
+    min-width: 300px; /* Мінімальна ширина секції, щоб займати не менше 300px */
+    padding: 20px;
+    box-sizing: border-box; 
+}
+
+figure{
+    margin: 0;
+}
+
+.price-block{
+    justify-content: start;
+    border: 2px dashed black;
+    padding: 20px;
+    position: relative;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.price-block-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+    align-items: center;
+}
+.price-block-row span, .price-block-row label{
+    font-weight: 600;
+    font-size: 20px;
+}
+.price-block-row input{
+    width: 60px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding-left: 10px;
+    font-size: 19px;
+    border-radius: 5px;
+}
+.price-block-btn{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    margin-top: 30px;
+    height: 40px;
+    width: 120px;
+    font-weight: 600;
+    padding: 10px;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 5px;
+    background-color: rgb(241, 241, 241);
+}
