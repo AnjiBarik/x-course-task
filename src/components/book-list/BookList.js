@@ -71,6 +71,7 @@ export default function BookList() {
             onChange={e => setInput(e.target.value)}
             type="search"
             id="searchName"
+            title="Search by book name"
             placeholder="🔎Search by book name"
           />
           {/* Вибір сортування за ціною */}

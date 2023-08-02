@@ -28,7 +28,7 @@ export default function SignIn() {
                     <img src={ava} alt="avatar"/>
                         <div className="input-block">
                             <label htmlFor="username">Username</label>
-                            <input value={input} onChange={e => setInput(e.target.value)} type="text" id="username" placeholder="type Username"/>
+                            <input value={input} onChange={e => setInput(e.target.value)} type="text" id="username" title="Please enter a name with at least 4 characters" placeholder="type Username"/>
                             <Link to="/booklist"><button id='submit' type="submit" disabled>Sign In</button></Link>
                         </div>
                 </section>

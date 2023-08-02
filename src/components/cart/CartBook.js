@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import cart from './img/cart.svg';
 import { BooksContext } from '../../BooksContext';
-
 export default function CartBook(props) {
   // Змінна для збереження загальної вартості книжок у кошику
   let totalPrice = 0;
@@ -27,7 +26,7 @@ export default function CartBook(props) {
       <button className="cart-remove" onClick={() => removeBookFromCart(el.title)}>
         ❌
       </button>
-      <p className="cart-text">
+        <p className="cart-text">
         <b>Book name: </b>
         {el.title}
       </p>
