@@ -9,7 +9,7 @@ const BooksProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    // Функція для отримання даних про книжки зі зовнішнього JSON-файлу з задержкою
+    // Функція для отримання даних про книжки зі зовнішнього JSON-файлу 
     const fetchDataWithDelay = async () => {
       await new Promise(resolve => setTimeout(resolve, 100));
       // Отримуємо дані про книжки зі зовнішнього JSON-файлу
@@ -20,7 +20,7 @@ const BooksProvider = ({ children }) => {
     fetchDataWithDelay();
   }, []);
 
-  // Ініціалізація кошика для зберігання книжок, які були додані в кошик користувачем
+  // Ініціалізація кошика для зберігання книжок, які були додані користувачем
   if (!localStorage.bookToCart) {
     localStorage.bookToCart = JSON.stringify([]);
   }
