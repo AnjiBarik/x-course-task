@@ -5,7 +5,6 @@ import App from './App';
 import { HashRouter } from 'react-router-dom';
 
 import { BooksProvider } from './BooksContext';
- // використовуємо створений постачальник контексту для обернення  додатку
 ReactDOM.render(
   <HashRouter>
    <BooksProvider>  

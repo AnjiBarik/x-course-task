@@ -24,7 +24,7 @@ export default function SignIn() {
                 <h1>JS BAND STORE/Barik&nbsp;Andrei </h1>
             </section>
             <div className="mainBlock">
-                <section className="autorization-block">
+                <section className="autorization-block dark">
                     <img src={ava} alt="avatar"/>
                         <div className="input-block">
                             <label htmlFor="username">Username</label>

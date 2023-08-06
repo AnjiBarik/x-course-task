@@ -10,11 +10,10 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
     border-radius: 5px;
     flex-wrap: wrap;
-
 }
+
 .header-right{
     display: flex;
     flex-direction: row;
@@ -45,9 +44,11 @@ body {
     justify-content: flex-start;
     font-weight: 600;
 }
+
 .user img{
     margin-right: 10px;
 }
+
 .head-img {
     width: 50px;
 }

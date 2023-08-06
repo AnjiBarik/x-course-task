@@ -19,9 +19,9 @@ figure, .about, .price-block{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    flex-basis: 33.33%; /* Розмір секції на 33.33% ширини контейнера (3 секції в ряд) */
-    min-width: 300px; /* Мінімальна ширина секції, щоб займати не менше 300px */
-    padding: 20px;
+    flex-basis: 33.33%; 
+    min-width: 275px; 
+    padding: 10px;
     box-sizing: border-box; 
 }
 
@@ -34,7 +34,6 @@ figure{
     border: 2px dashed black;
     padding: 20px;
     position: relative;
-    height: 250px;
     border-radius: 5px;
 }
 
@@ -43,7 +42,7 @@ figure{
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     align-items: center;
 }
 .price-block-row span, .price-block-row label{
@@ -59,15 +58,19 @@ figure{
     border-radius: 5px;
 }
 .price-block-btn{
-    position: absolute;
     bottom: 20px;
     right: 20px;
-    margin-top: 30px;
-    height: 40px;
+    margin-top: 5px;
+    height: 50px;
     width: 120px;
     font-weight: 600;
     padding: 10px;
     border: 1px solid rgb(104, 104, 104);
     border-radius: 5px;
     background-color: rgb(241, 241, 241);
+}
+
+.increment, .decrement{
+    font-size: 25px;
+    margin: 5px 5px 5px 5px;
 }

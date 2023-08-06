@@ -1,13 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import cart from './img/cart.svg';
 import { BooksContext } from '../../BooksContext';
+
+import PriceBlock from '../specific-book/PriceBlock';
+
 export default function CartBook(props) {
   // Змінна для збереження загальної вартості книжок у кошику
   let totalPrice = 0;
 
   // Отримуємо дані про книжки з контексту
-  const { cartItems, setCartItems } = useContext(BooksContext);
+  const { cartItems, setCartItems, theme } = useContext(BooksContext);
+
+  const [showPriceBlock, setShowPriceBlock] = useState({});
+
+  // Функція для показу блоку з ціною при кліку на книжку
+  const handleBookClick = (id) => {
+    setShowPriceBlock((prevState) => ({ ...prevState, [id]: true }));
+  };
+
+  // Функція для приховання блоку з ціною при кліку поза книжкою
+  const handleOutsideClick = (id) => {
+    setShowPriceBlock((prevState) => ({ ...prevState, [id]: false }));
+  };
 
   // Перевіряємо, чи є книжки у кошику. Якщо кошик порожній, виводимо повідомлення
   if (!cartItems || cartItems.length === 0) {
@@ -21,12 +36,22 @@ export default function CartBook(props) {
 
   // Використовуємо метод `map` для створення масиву компонентів `<div>` зі списком книжок
   const singleBook = props.sold.map((el) => (
-    <div className="cartBook custom-element" key={Number(el.totalBooklPrice)}>
+    <div
+      onClick={() => handleBookClick(el.id)}
+      // onBlur={() => handleOutsideClick(el.id)}
+      className="cartBook custom-element"
+      key={Number(el.totalBooklPrice)}
+      tabIndex="0" // Додаємо `tabIndex`, щоб елемент був фокусованим та реагував на клавіші
+    >
       {/* Кнопка для видалення книжки з кошика */}
-      <button className="cart-remove" onClick={() => removeBookFromCart(el.title)}>
+      <button
+        className="cart-remove"
+        onClick={() => removeBookFromCart(el.title)}
+        tabIndex="-1" // Додаємо `-1`, щоб кнопка не була фокусованою при кліку на книжку
+      >
         ❌
       </button>
-        <p className="cart-text">
+      <p className="cart-text">
         <b>Book name: </b>
         {el.title}
       </p>
@@ -41,6 +66,12 @@ export default function CartBook(props) {
       <p className="cart-price">
         <b>Price, $</b> {Number(el.totalBooklPrice)}
       </p>
+      <section className="price-block-container">
+        {/* Показ блоку з ціною при кліку на книжку */}
+        {showPriceBlock[el.id] && (
+          <PriceBlock title={el.title} price={el.price} cartItems={cartItems} theme={theme} />
+        )}
+      </section>
     </div>
   ));
 
@@ -73,7 +104,7 @@ export default function CartBook(props) {
   return (
     <div className="main-cart-book">
       {/* Кнопка для очищення кошика */}
-      <button onClick={cleanStorage} className="purchase button">
+      <button onClick={cleanStorage} className="purchase button custom-element">
         Purchase
       </button>
       {singleBook}
