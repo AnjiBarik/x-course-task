@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './header.css';
 import ava from './img/avatar.png';
 import cart from './img/cart.svg';
@@ -17,9 +17,9 @@ export default function Header() {
   // Отримання даних про книжки з контексту BooksContext
   const { cartItems } = React.useContext(BooksContext);
 
-  // Кількість книжок у кошику та загальна вартість
+  // Кількість заказів у кошику 
   const cartItemsCount = cartItems.length;
-  let totalCartPrice = cartItems.reduce((accumulator, el) => accumulator + Number(el.totalBooklPrice), 0);
+ // let totalCartPrice = cartItems.reduce((accumulator, el) => accumulator + Number(el.totalBooklPrice), 0);
 
   return (
     <>
@@ -42,8 +42,8 @@ export default function Header() {
 
         {/* Виведення кількості книжок у кошику та загальної вартості, якщо вони є */}
         {cartItemsCount > 0 && (
-          // <span className="cart-count">📦 {cartItemsCount}<br></br>${totalCartPrice.toFixed(2)}</span>
-          <span className="cart-count">📦{cartItemsCount}</span>
+          //<span className="cart-count">📦 {cartItemsCount}<br></br>${totalCartPrice.toFixed(2)}</span>
+           <span className="cart-count">📦{cartItemsCount}</span>
         )}
 
         {/* Посилання на вихід з акаунта */}

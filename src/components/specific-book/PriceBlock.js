@@ -30,7 +30,7 @@ export default function PriceBlock({ title, price, cartItems, theme }) {
   const [count, setCount] = useState(specificCount || 1);
 
   // Використано хук `useMemo` для обчислення загальної ціни книги
-  const totalBookPrice = useMemo(() => ('$' + price * count).slice(1), [count, price]);
+  const totalBookPrice = useMemo(() => ( price * count).toFixed(2), [count, price]);
 
   // Визначення тексту кнопки в залежності від наявності книги в кошику
   const buttonTitle = specificCount > 0 ? `Reselect🛒${count} ` : 'Add to cart🛒';

@@ -109,7 +109,6 @@ body {
   color: #fff; 
   text-align: center;
   text-decoration: none;
- 
   border-radius: 25px; 
   cursor: pointer;
   transition: background 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -138,7 +137,7 @@ body {
     width: auto;
     /* background-color: #fff; */
     /* background-color:  rgb(241, 241, 241); */
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 5px;
     padding: 5px 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
