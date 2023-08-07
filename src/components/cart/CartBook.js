@@ -102,7 +102,7 @@ export default function CartBook(props) {
   }
 
   return (
-    <div className="main-cart-book">
+    <div className="main-cart-book main">
       {/* Кнопка для очищення кошика */}
       <button onClick={cleanStorage} className="purchase button custom-element">
         Purchase

@@ -6,7 +6,7 @@ body {
 .main-cart-book{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     padding: 2px 5px;
     margin: 20px 0 250px 0;
@@ -81,5 +81,8 @@ body {
 }
 
 .cart-block{
-    position: relative;
+    position: fixed;
+}
+.main{
+    min-height: 100vh
 }

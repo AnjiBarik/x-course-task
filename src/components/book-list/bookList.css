@@ -136,7 +136,8 @@ body {
     top: 100%;
     left: 0;
     width: auto;
-    background-color: #fff;
+    /* background-color: #fff; */
+    /* background-color:  rgb(241, 241, 241); */
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 5px 5px;

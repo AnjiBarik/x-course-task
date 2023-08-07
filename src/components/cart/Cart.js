@@ -23,7 +23,7 @@ export default function Cart() {
     if (!cartItems || cartItems.length === 0) {
         // Якщо корзина порожня
         cartContent = (
-            <div className="main custom-element">
+            <div className="main">
                 <img src={cart} alt="cart empty" />
                 <span>Cart empty..</span>
             </div>
