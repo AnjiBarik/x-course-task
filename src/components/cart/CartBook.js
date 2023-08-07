@@ -66,7 +66,7 @@ export default function CartBook(props) {
       <p className="cart-price">
         <b>Price, $</b> {Number(el.totalBooklPrice)}
       </p>
-      <section className="price-block-container">
+      <section className="price-block-container cart-block">
         {/* Показ блоку з ціною при кліку на книжку */}
         {showPriceBlock[el.id] && (
           <PriceBlock title={el.title} price={el.price} cartItems={cartItems} theme={theme} />

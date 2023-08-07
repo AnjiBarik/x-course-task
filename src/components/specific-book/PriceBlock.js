@@ -33,7 +33,7 @@ export default function PriceBlock({ title, price, cartItems, theme }) {
   const totalBookPrice = useMemo(() => ('$' + price * count).slice(1), [count, price]);
 
   // Визначення тексту кнопки в залежності від наявності книги в кошику
-  const buttonTitle = specificCount > 0 ? `Reselect🛒${specificCount} book` : 'Add to cart🛒';
+  const buttonTitle = specificCount > 0 ? `Reselect🛒${count} ` : 'Add to cart🛒';
 
   return (
     <section className={theme}>
@@ -43,7 +43,7 @@ export default function PriceBlock({ title, price, cartItems, theme }) {
           <span id="price">{price}</span>
         </div>
         <div className="price-block-row">
-          <label htmlFor="count">Count:</label>
+          <label htmlFor="count">Count:{specificCount}</label>
           <div>
             <button
               className='increment'

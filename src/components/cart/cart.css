@@ -79,3 +79,7 @@ body {
     margin: 2px;
     padding: 10px;
 }
+
+.cart-block{
+    position: relative;
+}
