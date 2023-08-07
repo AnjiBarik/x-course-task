@@ -51,7 +51,7 @@ body {
     margin: 2px;
     padding: 1px;
     border-radius: 5px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 } 
 
 #total{
@@ -62,14 +62,14 @@ body {
 }
 
 .cart-text{
-    margin: 5px;
-    padding: 5px;
-    width: 40%;
+    /* margin: 5px;
+    padding: 5px; */
+    width: 50%;
 }
 .cart-price{
-    margin: 5px;
-    padding: 5px;
-    width: 10%;
+    /* margin: 5px;
+    padding: 5px; */
+    width: 20%;
 }
 .cart-remove{
     border-radius: 50%;   
