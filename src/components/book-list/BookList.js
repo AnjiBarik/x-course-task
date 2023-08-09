@@ -84,10 +84,8 @@ export default function BookList() {
           </select>
         </section>
         <ScrollToTopButton />
-        
         {/* Передаємо відсортований масив книжок у компонент `Shelf` */}
         <Shelf book={sortedBooks} />
-        
         <Footer />
       </section>
     </>

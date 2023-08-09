@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './specificBook.css';
 import Footer from "../footer/Footer";
 import Header from '../header/Header';
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { BooksContext } from '../../BooksContext';
 import PriceBlock from './PriceBlock'; 
 import  ScrollToTopButton  from '../book-list/ScrollToTopButton';

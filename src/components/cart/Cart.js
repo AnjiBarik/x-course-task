@@ -38,7 +38,7 @@ export default function Cart() {
         <>
            <section className={theme}>
             <section className="header">
-                <Header />
+            <Header />
             </section>
             {/* Відображаємо контент корзини */}
             {cartContent}

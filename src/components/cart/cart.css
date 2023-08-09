@@ -83,6 +83,7 @@ body {
 .cart-block{
     position: fixed;
 }
+
 .main{
-    min-height: 100vh
+    min-height: 81vh
 }

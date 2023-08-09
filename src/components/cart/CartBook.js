@@ -38,10 +38,9 @@ export default function CartBook(props) {
   const singleBook = props.sold.map((el) => (
     <div
       onClick={() => handleBookClick(el.id)}
-      // onBlur={() => handleOutsideClick(el.id)}
       className="cartBook custom-element"
       key={Number(el.totalBooklPrice)}
-      tabIndex="0" // Додаємо `tabIndex`, щоб елемент був фокусованим та реагував на клавіші
+      tabIndex="0" 
     >
       {/* Кнопка для видалення книжки з кошика */}
       <button
