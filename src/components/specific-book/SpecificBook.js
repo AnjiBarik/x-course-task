@@ -5,6 +5,7 @@ import Header from '../header/Header';
 import { Link, Navigate } from "react-router-dom";
 import { BooksContext } from '../../BooksContext';
 import PriceBlock from './PriceBlock'; 
+import  ScrollToTopButton  from '../book-list/ScrollToTopButton';
 
 export default function SpecificBook() {
   // Отримання даних про книжки з контексту BooksContext
@@ -38,6 +39,7 @@ export default function SpecificBook() {
         </section>
         <PriceBlock title={title} price={price} cartItems={cartItems} theme={theme} /> {/* Використовуємо компонент PriceBlock */}
       </section>
+      <ScrollToTopButton />
       <Footer />
     </section>
   );

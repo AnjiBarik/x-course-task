@@ -5,6 +5,7 @@ import Header from '../header/Header';
 import Shelf from './Shelf';
 import './bookList.css';
 import { BooksContext } from '../../BooksContext';
+import  ScrollToTopButton  from './ScrollToTopButton';
 
 export default function BookList() {
   // Отримуємо доступ до контексту
@@ -82,8 +83,11 @@ export default function BookList() {
             <option value="highPrice">more than 30</option>
           </select>
         </section>
+        <ScrollToTopButton />
+        
         {/* Передаємо відсортований масив книжок у компонент `Shelf` */}
         <Shelf book={sortedBooks} />
+        
         <Footer />
       </section>
     </>

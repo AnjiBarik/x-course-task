@@ -6,6 +6,7 @@ import Footer from "../footer/Footer";
 import cart from './img/cart.svg';
 import CartBook from "./CartBook";
 import { BooksContext } from '../../BooksContext';
+import  ScrollToTopButton  from '../book-list/ScrollToTopButton';
 
 export default function Cart() {
     // Доступ до контексту
@@ -41,6 +42,7 @@ export default function Cart() {
             </section>
             {/* Відображаємо контент корзини */}
             {cartContent}
+            <ScrollToTopButton />
             <Footer />
             </section>
         </>
