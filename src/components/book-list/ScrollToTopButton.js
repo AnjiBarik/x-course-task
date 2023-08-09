@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import './scrollToTopButton.css';
+
 export default function ScrollToTopButton() {
-    const [backToTopButton, setBackToTopButton] = useState(false);
+    const [showButton, setShowButton] = useState(false);
 
-	useEffect(() => {
-		window.addEventListener('scroll', () => {
-			if (window.scrollY > 200) {
-				setBackToTopButton(true);
-			} else {
-				setBackToTopButton(false);
-			}
-		});
-	}, []);
+    const scrollUp = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
 
-	const scrollUp = () => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		});
-	};
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowButton(window.scrollY > 200);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
 	return (
 		<>
-			{backToTopButton && (
-				<button className="btn-up" onClick={scrollUp}>
-					🔼
+			{showButton && (
+				<button className="button-up" onClick={scrollUp}>
+				⬆️
 				</button>
 			)}
 		</>
