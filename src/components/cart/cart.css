@@ -67,8 +67,8 @@ body {
     width: 50%;
 }
 .cart-price{
-    /* margin: 5px;
-    padding: 5px; */
+    margin: 5px;
+    padding: 5px;
     width: 20%;
 }
 .cart-remove{
