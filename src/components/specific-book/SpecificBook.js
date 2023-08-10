@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 import { BooksContext } from '../../BooksContext';
 import PriceBlock from './PriceBlock'; 
 import  ScrollToTopButton  from '../book-list/ScrollToTopButton';
+import notFound from '../book-list/img/imageNotFound.png';
 
 export default function SpecificBook() {
   // Отримання даних про книжки з контексту BooksContext
@@ -26,7 +27,7 @@ export default function SpecificBook() {
       </section>
       <section className="book-page">
         <figure>
-          <img src={image} alt={title} />
+          <img src={image === '' ? notFound : image} alt={title} />
           <figcaption>
             <p><b>Description: </b>{description}</p>
           </figcaption>
