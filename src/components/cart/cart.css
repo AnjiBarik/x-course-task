@@ -9,7 +9,7 @@ body {
     /* justify-content: center; */
     align-items: center;
     padding: 2px 5px;
-    margin: 20px 18px 150px 18px;
+    margin: 20px 18px 180px 18px;
 }
 
 .main img{
@@ -63,13 +63,13 @@ body {
 }
 
 .cart-text{
-    margin: 5px;
-    padding: 5px;
+    margin: 2px;
+    padding: 2px;
     width: 50%;
 }
 .cart-price{
-    margin: 5px;
-    padding: 5px;
+    margin: 2px;
+    padding: 2px;
     width: 20%;
 }
 .cart-remove{
