@@ -73,7 +73,7 @@ export default function Shelf(props) {
   // Функція, що зберігає об'єкт `data` в `localStorage`
   function bookInfo(e) {
     // Знаходимо відповідний об'єкт `data` в масиві `props.book` за допомогою id
-    let data = props.book.find((el) => el.id == e.target.closest('.book').id);
+    let data = props.book.find((el) => el.id = e.target.closest('.book').id);
     // Зберігаємо об'єкт `data` в `localStorage`
     localStorage.setItem('specificBook', JSON.stringify(data));
   }

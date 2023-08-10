@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { Navigate } from 'react-router-dom';
 import Footer from "../footer/Footer";
 import Header from '../header/Header';
@@ -21,18 +21,7 @@ export default function BookList() {
   const [select, setSelect] = useState('default');
   const [sortedBooks, setSortedBooks] = useState([...books]);
 
-  // Використовуємо хук `useEffect` для виклику `findBook` при зміні `input` та `select`
-  useEffect(() => {
-    findBook();
-  }, [input, select]);
-
-  // Перевіряємо, чи є ім'я користувача у localStorage. Якщо його немає, перенаправляємо на головну сторінку
-  if (!localStorage.username) {
-    return <Navigate to="/" redirect={true} />;
-  }
-
-  // Функція для пошуку та сортування книжок
-  function findBook() {
+  const findBook=useCallback(() => {
     let sortedBooksCopy = [...books];
 
     // Фільтруємо книжки за введеним рядком пошуку
@@ -54,6 +43,15 @@ export default function BookList() {
     } else {
       setSortedBooks(sortedBooksCopy); // Залишаємо сортування за замовчуванням
     }
+  },[input, select, books]);
+ 
+  useEffect(() => {
+    findBook();
+  }, [findBook]);
+
+  // Перевіряємо, чи є ім'я користувача у localStorage. Якщо його немає, перенаправляємо на головну сторінку
+  if (!localStorage.username) {
+    return <Navigate to="/" redirect={true} />;
   }
 
   return (
