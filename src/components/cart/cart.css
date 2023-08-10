@@ -9,7 +9,7 @@ body {
     /* justify-content: center; */
     align-items: center;
     padding: 2px 5px;
-    margin: 20px 18px 25px 18px;
+    margin: 20px 18px 150px 18px;
 }
 
 .main img{
@@ -51,6 +51,7 @@ body {
     margin: 2px;
     padding: 1px;
     border-radius: 5px;
+    cursor: pointer;
     /* flex-wrap: wrap; */
 } 
 
