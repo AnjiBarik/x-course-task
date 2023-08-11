@@ -13,6 +13,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 180px;
+    min-height: 81vh
 }
 
 .book{

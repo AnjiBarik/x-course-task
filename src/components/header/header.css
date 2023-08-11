@@ -38,11 +38,12 @@ body {
     margin:0 3px;
 }
 .user{
-    width: 170px;
+    /* width: 170px; */
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-weight: 600;
+    /* font-weight: 600; */
+    flex-wrap: wrap;
 }
 
 .user img{
