@@ -4,22 +4,30 @@ import ava from './img/avatar.png';
 import cart from './img/cart.svg';
 import { Link } from "react-router-dom";
 import { BooksContext } from '../../BooksContext';
+import { SHA256 } from 'crypto-js';
+
 
 export default function Header() {
-  // Функція для очищення імені користувача з localStorage при виході з акаунта
-  function clearUser() {
-    localStorage.removeItem('username');
-  }
-
-  // Отримання імені користувача з localStorage заздалегідь, щоб уникнути звернень до localStorage під час рендерингу
+ 
   const username = localStorage.getItem('username');
-
   // Отримання даних про книжки з контексту BooksContext
   const { cartItems } = React.useContext(BooksContext);
-
   // Кількість заказів у кошику 
   const cartItemsCount = cartItems.length;
+   
+  function clearUser() {
+  
+    const username = localStorage.getItem('username');
+    const hashedUsername = SHA256(username).toString();
+    const storedPurchases = JSON.parse(localStorage.getItem('purchases')) || {};
+   // Зберігаємо список покупок для даного хешу імені користувача
+    storedPurchases[hashedUsername] = cartItems;
+    localStorage.setItem('purchases', JSON.stringify(storedPurchases));
  
+    localStorage.removeItem('username');
+    localStorage.removeItem('bookToCart');
+  }
+
   return (
     <>
       {/* Ліва частина хедера */}
