@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import notFound from './img/imageNotFound.png';
 import { BooksContext } from '../../BooksContext';
 import PriceBlock from '../specific-book/PriceBlock';
-
 import cartIcon from '../cart/img/cart.svg';
 
 export default function Shelf(props) {
   const { cartItems, theme } = useContext(BooksContext); // Доступ до контексту
-
   const [priceBlockVisible, setPriceBlockVisible] = useState({});
 
   // Функція для показу блоку з ціною при наведенні на книжку
@@ -58,7 +56,7 @@ export default function Shelf(props) {
       <Link to="/cart">
         {cartItems.some((item) => item.title === el.title) && (
           <img src={cartIcon} alt="Cart" className="cart-icon" />
-        )}
+        )} 
       </Link>
 
       {/* Показ блоку з ціною */}

@@ -27,7 +27,7 @@ export default function ScrollToTopButton() {
 		<>
 			{showButton && (
 				<button className="button-up" onClick={scrollUp}>
-				⏫
+				▲
 				</button>
 			)}
 		</>

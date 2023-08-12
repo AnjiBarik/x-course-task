@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import cart from './img/cart.svg';
 import { BooksContext } from '../../BooksContext';
-
 import PriceBlock from '../specific-book/PriceBlock';
 
 export default function CartBook(props) {
@@ -18,11 +17,6 @@ export default function CartBook(props) {
   const handleBookClick = (id) => {
     setShowPriceBlock((prevState) => ({ ...prevState, [id]: true }));
   };
-
-  // Функція для приховання блоку з ціною при кліку поза книжкою
-  // const handleOutsideClick = (id) => {
-  //   setShowPriceBlock((prevState) => ({ ...prevState, [id]: false }));
-  // };
 
   // Перевіряємо, чи є книжки у кошику. Якщо кошик порожній, виводимо повідомлення
   if (!cartItems || cartItems.length === 0) {

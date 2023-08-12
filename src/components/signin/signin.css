@@ -46,9 +46,10 @@ input::placeholder{
 .autorization-block img{
     width: 160px;
     height: 160px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 0 auto;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    filter: drop-shadow(3px 5px 10px rgba(223, 223, 230, 0.6));
 }
 
 .autorization-block button{

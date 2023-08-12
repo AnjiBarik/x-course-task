@@ -12,7 +12,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    min-height: 81vh
+    min-height: 60vh
 }
 
 figure, .about, .price-block{
@@ -32,7 +32,6 @@ figure{
 
 .price-block{
     justify-content: start;
-    /* border: 2px dashed black; */
     padding: 20px;
     position: relative;
     border-radius: 5px;
