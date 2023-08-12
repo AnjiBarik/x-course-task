@@ -70,7 +70,7 @@ body {
 #searchName{
     border: 1px solid gray;
     height: 40px;
-    font-size: 20px;
+    font-size: 18px;
     margin:3px 10px ;
     min-width: 270px;
     background-color:#f0f0f0 ;
@@ -170,10 +170,10 @@ body {
   }
 
   .light-theme{
-    background-color: green;
+    background-color:#36f4e4;
     color: white;
     border-radius: 50%;
-    border: 5px solid gray;   
+    border: 5px solid #36f4e4;   
     margin:3px 10px ;
   }
   
@@ -186,11 +186,10 @@ body {
   }
 
   .reset-button{
-    background-color: white;
     color: black;
     border-radius: 5px;
-    border: 1px solid gray;   
     margin:3px 3px ;
     padding: 1px 8px;
     cursor: pointer;
+    border: none;
   }
