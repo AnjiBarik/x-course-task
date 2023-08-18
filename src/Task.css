@@ -26,3 +26,100 @@
     background-color: #f39c12;
   }
   
+
+
+  .task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: white; /* Белый фон по умолчанию */
+  }
+  
+  .task.completed {
+    background-color: #d4fadc; /* Зеленый фон для статуса "completed" */
+    text-decoration: line-through; /* Перечеркнутый текст для статуса "completed" */
+  }
+  
+  .task-actions button {
+    /* background-color: #f0f0f0; */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    text-decoration: none;
+  }
+  
+  .task-actions button:hover {
+    background-color: #e0e0e0;
+    text-decoration: none;
+  }
+  
+
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .task-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pending-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .pending-button:hover {
+    background-color: #45a049;
+    text-decoration: none;
+  }
+
+  .very-important {
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    padding: 4px 8px;
+    font-weight: bold;
+    margin-right: 8px;
+    text-decoration: none;
+  }
+  
+  .modal {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
