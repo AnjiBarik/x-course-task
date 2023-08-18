@@ -44,7 +44,8 @@ const selectDate = (date) => {
 useEffect(() => {
     if (!selectedDate) {
       const currentDate = new Date();
-      const formattedDate = currentDate.toISOString().split('T')[0];
+     // const formattedDate = currentDate.toISOString().split('T')[0];
+      const formattedDate =currentDate.toLocaleDateString('uk-UA').split('/')[0] 
       setSelectedDate(formattedDate);
     }
   }, [selectedDate]);

@@ -5,7 +5,7 @@ import AddTaskForm from './AddTaskForm';
 
 
 function Tasks() {
-  const { tasks, selectedDate } = useTasks();
+  const { tasks, selectedDate  } = useTasks();
   const [showAddForm, setShowAddForm] = useState(false);
   
   return (

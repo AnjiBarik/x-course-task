@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
 }
 
-.header {
+ .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,7 +18,7 @@ body {
   color: white;
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+} 
 
 .menu-icon {
   cursor: pointer;
@@ -31,9 +31,9 @@ body {
   transition: margin-left 0.3s;
 }
 
-.menu-open {
+/* .menu-open {
   margin-left: 250px;
-}
+} */
 
 .calendar {
   flex: 1;
