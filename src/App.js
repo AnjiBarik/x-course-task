@@ -1,31 +1,37 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import BookList from "./components/book-list/BookList";
-import Cart from "./components/cart/Cart";
-import SignIn from "./components/signin/Signin";
-import SpecificBook from "./components/specific-book/SpecificBook";
-import Page404 from "./components/Page404";
+import React, { useState } from 'react';
+import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import Calendar from './Calendar';
+import Tasks from './Tasks';
+import AddTaskForm from './AddTaskForm';
+import { TasksProvider } from './TasksContext';
+
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <>
-      <Routes>
-        {/* Головна сторінка з авторизацією */}
-        <Route path="/" element={<SignIn />} />
-
-        {/* Сторінка зі списком книг */}
-        <Route path="/booklist" element={<BookList />} />
-
-        {/* Сторінка кошика */}
-        <Route path="/cart" element={<Cart />} />
-
-        {/* Сторінка окремої книги */}
-        <Route path="/specificbook" element={<SpecificBook />} />
-
-        {/* Сторінка 404 - сторінка, яка відображатиметься при невірному шляху */}
-        <Route path="*" element={<Page404 />} />
-      </Routes>
-    </>
+    <TasksProvider>
+    <div className="app">
+      <header className="header">
+        <div className="menu-icon" onClick={toggleMenu}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+        <h1>Task Calendar App</h1>
+      </header>
+      <div className={`main-content ${menuOpen ? 'menu-open' : ''}`}>
+        {/* <CalendarComponent />
+        <TasksComponent /> */}
+      <Calendar selectedDate={selectedDate} onDateChange={setSelectedDate} />
+      <Tasks  selectedDate={selectedDate} />
+      </div>
+    </div>
+    </TasksProvider>
   );
 }
 

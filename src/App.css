@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  transition: margin-left 0.3s;
+}
+
+.menu-open {
+  margin-left: 250px;
+}
+
+.calendar {
+  flex: 1;
+  padding: 20px;
+}
+
+.tasks {
+  flex: 1;
+  padding: 20px;
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    flex-direction: column;
+  }
+}
+
+.calendar-cell.pending {
+  background-color: green;
+}
+
+.calendar-cell.overdue {
+  background-color: red;
+}

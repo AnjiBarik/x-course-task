@@ -4,12 +4,10 @@ import './index.css';
 import App from './App';
 import { HashRouter } from 'react-router-dom';
 
-import { BooksProvider } from './BooksContext';
+ 
 ReactDOM.render(
   <HashRouter>
-   <BooksProvider>  
-    <App />
-    </BooksProvider>  
+    <App/>
   </HashRouter>,
   document.getElementById('root')
 );

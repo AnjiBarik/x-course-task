@@ -1,0 +1,28 @@
+.task {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .past-due {
+    border-color: #e74c3c;
+  }
+  
+  .completed {
+    border-color: #2ecc71;
+  }
+  
+  .deleted {
+    border-color: #95a5a6;
+  }
+  
+  .not-very-important {
+    background-color: #f9e79f;
+  }
+  
+  .very-important {
+    background-color: #f39c12;
+  }
+  

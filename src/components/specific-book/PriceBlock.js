@@ -45,16 +45,18 @@ export default function PriceBlock({ title, price, cartItems, theme }) {
           <span id="price">{price}</span>
         </div>
         <div className="price-block-row">
-          <label htmlFor="count">Count:{specificCount}</label>
+          <label htmlFor="count" data-testid="count-label">Count:{specificCount}</label>
           <div>
             <button
-              className='increment'
+              className='decrement'
+              data-testid="decrement"
               type="button"
               disabled={count === 1 }
               onClick={() => setCount(prevCount => Math.max(1, prevCount - 1))}
             >-</button>
             <button
-              className='decrement'
+              className='increment'
+              data-testid='increment'
               type="button"
               disabled={count === 42 }
               onClick={() => setCount(prevCount => Math.min(42, prevCount + 1))}
@@ -62,6 +64,7 @@ export default function PriceBlock({ title, price, cartItems, theme }) {
             <input
               onChange={(e) => setCount(Math.min(42, Math.max(1, parseInt(Number(e.target.value)))))}
               type="number"
+              data-testid="count-input"
               id="count"
               min="1"
               max="42"
@@ -71,7 +74,7 @@ export default function PriceBlock({ title, price, cartItems, theme }) {
         </div>
         <div className="price-block-row">
           <span>Total price, $ </span>
-          <span id="totalPrice">{totalBookPrice}</span>
+          <span id="totalPrice" data-testid="totalPrice">{totalBookPrice}</span>
         </div>
         <Link to="/cart">
           <button onClick={addedBooks} className="price-block-btn button" type="submit">
