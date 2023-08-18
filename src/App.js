@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Calendar from './Calendar';
 import Tasks from './Tasks';
-import AddTaskForm from './AddTaskForm';
+//import AddTaskForm from './AddTaskForm';
 import { TasksProvider } from './TasksContext';
 import Header from './Header'
 
@@ -13,9 +13,6 @@ function App() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-
-
-
   };
 
   return (

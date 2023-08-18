@@ -36,12 +36,7 @@ const handleImportClick = () => {
 };
 
  
-  // const handleImportClick = () => {
-  //     //   if (clipboardData) {
-  //     localStorage.setItem('tasks', clipboardData);
-  //   }
-  // };
-
+ 
   return (
     <header className="Header">
        <nav className="Nav">

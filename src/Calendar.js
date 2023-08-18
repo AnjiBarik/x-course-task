@@ -7,8 +7,6 @@ function CalendarComponent() {
   const { selectDate } = useTasks();
 
   const handleDateChange = (date) => {
-    // Преобразуем дату в строку, чтобы она могла быть передана в контекст
-    //const formattedDate = date.toISOString().split('T')[0] ;
     const formattedDate = 
     date.toLocaleDateString('uk-UA').split('/')[0] 
    
