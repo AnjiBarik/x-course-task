@@ -8,6 +8,7 @@ function AddTaskForm({ onClose, editedTask }) {
   const [status, setStatus] = useState('pending');
 
   useEffect(() => {
+    // Set form values from editedTask when it is provided
     if (editedTask) {
       setTitle(editedTask.title);
       setPriority(editedTask.priority);
@@ -15,8 +16,8 @@ function AddTaskForm({ onClose, editedTask }) {
     }
   }, [editedTask]);
 
-
   const handleVoiceInput = () => {
+    // Handle voice input to set the title
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'en-US'; 
     recognition.onresult = (event) => {
@@ -29,18 +30,26 @@ function AddTaskForm({ onClose, editedTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editedTask) {
+      // Update the task if editedTask is provided
       updateTask(editedTask.id, { title, priority, status });
     } else {
+      // Add a new task with selectedDate
       const newTask = { title, priority, status, date: selectedDate };
       addTask(newTask);
     }
     onClose();
   };
 
+  const handleQuickTask = () => {
+    // Create a quick task with status "quick-note"
+    const quickTask = { title, priority, status: 'quick-note', date: selectedDate };
+    addTask(quickTask);
+    onClose();
+  };
   
   return (
     <div className="add-task-form">
-      <h3>Add New Task</h3>
+     {editedTask ? null : <h3>Add New Task</h3>}
       <form onSubmit={handleSubmit}>
         <label>
           Title:
@@ -56,25 +65,13 @@ function AddTaskForm({ onClose, editedTask }) {
             <option value="important">Important</option>
           </select>
         </label>
-        {/* <label>
-          Status:
-          <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="pending">Pending</option>
-            <option value="completed">Completed</option>
-            <option value="overdue">Overdue</option>
-          </select>
-        </label> */}
         <br/>
         <button type="submit">Save</button> 
         <button onClick={onClose}>Cancel</button>
+        {/* <button type="button" onClick={handleQuickTask}>Quick Task</button> */}
       </form>
     </div>
   );
 }
 
 export default AddTaskForm;
-
-
-
-
-

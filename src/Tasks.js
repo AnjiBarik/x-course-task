@@ -1,58 +1,82 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { useTasks } from './TasksContext';
 import Task from './Task';
 import AddTaskForm from './AddTaskForm';
 
-
 function Tasks() {
-  const { tasks, selectedDate  } = useTasks();
+  const { tasks, selectedDate, addTask } = useTasks();
   const [showAddForm, setShowAddForm] = useState(false);
-  
-  const [editedTask, setEditedTask] = useState(null);
-  const openAddForm = () => {
-    setShowAddForm(true);
-    setEditedTask(null); 
+  const [onlyCurrent, setOnlyCurrent] = useState(true);
+
+  const sortTasks = (a, b) => {
+    if (a.status === 'quick-note' && b.status !== 'quick-note') {
+      return -1;
+    }
+    if (a.status !== 'quick-note' && b.status === 'quick-note') {
+      return 1;
+    }
+    if (a.date === selectedDate && b.date !== selectedDate) {
+      return -1;
+    }
+    if (a.date !== selectedDate && b.date === selectedDate) {
+      return 1;
+    }
+    if (a.priority === 'important' && b.priority !== 'important') {
+      return -1;
+    }
+    if (a.priority !== 'important' && b.priority === 'important') {
+      return 1;
+    }
+    if (a.date === selectedDate && b.date === selectedDate) {
+      return 0;
+    }
+    return 0;
   };
 
+  const sortedTasks = [...tasks].sort(sortTasks);
+
+  const filterCurrentTasks = (task) => {
+    if (task.status === 'quick-note') {
+      return true;
+    }
+    return !onlyCurrent || (task.date === selectedDate);
+  };
+
+  const handleAddTaskClick = () => {
+    setShowAddForm(true);
+  };
+
+  const handleCloseAddForm = () => {
+    setShowAddForm(false);
+  };
+
+  const handleAddTask = (newTask) => {
+    addTask(newTask);
+    setShowAddForm(false);
+  };
 
   return (
     <div className="tasks">
       <h2>Tasks for {selectedDate}</h2>
-      <button className='addTasks' onClick={openAddForm}>Add Task</button>
-      {/* <button onClick={() => setShowAddForm(true)}>Add Task</button> */}
-      {/* {tasks.map((task, index) => (
-        <Task key={index} task={task} />
+      <button onClick={handleAddTaskClick}>Add Task</button>
+      <button onClick={() => setOnlyCurrent(!onlyCurrent)}>
+        {onlyCurrent ? 'Show All' : 'Only Current'}
+      </button>
 
+      {sortedTasks.filter(filterCurrentTasks).map((task) => (
+        <Task key={task.id} task={task} />
+      ))}
 
-      ))} */}
-
-{tasks.map((task) => {
-        if (task.date === selectedDate) {
-          return (
-            <Task
-              key={task.id}
-              task={task}
-              onEdit={() => {
-                setEditedTask(task);
-                setShowAddForm(true);
-              }}
-            />
-          );
-        }
-        return null; // Пропускаем задачи с неподходящей датой
-      })}
-
-      {/* {showAddForm && <AddTaskForm onClose={() => setShowAddForm(false)} />} */}
-      {showAddForm && <AddTaskForm onClose={() => setShowAddForm(false)} editedTask={editedTask} />}
-    
+      {showAddForm && (
+        <div className="modal">
+          <AddTaskForm onClose={handleCloseAddForm} onAddTask={handleAddTask} />
+        </div>
+      )}
     </div>
   );
 }
 
 export default Tasks;
-
-
-
-
-
+  
+  
 
