@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
 import { useTasks } from './TasksContext';
 
@@ -6,7 +6,11 @@ function Header() {
   const [clipboardData, setClipboardData] = useState('');
   const { selectDate } = useTasks();
 
-  const handleExportClick = () => {
+  useEffect(() => {
+  localStorage.removeItem('selectedDate');
+}, []);
+
+const handleExportClick = () => {
     const dataFromLocalStorage = localStorage.getItem('tasks');
     setClipboardData(dataFromLocalStorage);
 
@@ -45,6 +49,7 @@ function Header() {
     const updatedTasks = existingTasks.filter(task => task.status !== 'completed');
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
+ 
 
   return (
     <header className="Header">
