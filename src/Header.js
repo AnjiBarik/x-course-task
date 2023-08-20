@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import { useTasks } from './TasksContext';
 
@@ -6,9 +6,9 @@ function Header() {
   const [clipboardData, setClipboardData] = useState('');
   const { selectDate } = useTasks();
 
-  useEffect(() => {
-  localStorage.removeItem('selectedDate');
-}, []);
+//   useEffect(() => {
+//   localStorage.removeItem('selectedDate');
+// }, []);
 
 const handleExportClick = () => {
     const dataFromLocalStorage = localStorage.getItem('tasks');
@@ -22,24 +22,53 @@ const handleExportClick = () => {
     document.body.removeChild(dummy);
   };
 
-  const handleImportClick = () => {
-    const dataFromClipboard = clipboardData;
-    if (dataFromClipboard) {
-      const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-      const importedTasks = JSON.parse(dataFromClipboard);
-
-      const updatedTasks = [...existingTasks];
-
-      importedTasks.forEach(importedTask => {
-        const existingIndex = existingTasks.findIndex(task => task.id === importedTask.id);
-        if (existingIndex === -1) {
-          updatedTasks.push({ ...importedTask, status: 'imported' });
-        }
-      });
-
-      localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  const handleImportClick = async () => {
+    try {
+      const clipboardText = await navigator.clipboard.readText();
+      const importedTasks = JSON.parse(clipboardText);
+  
+      if (importedTasks && Array.isArray(importedTasks)) {
+        const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        const updatedTasks = [...existingTasks];
+  
+        importedTasks.forEach(importedTask => {
+          const existingIndex = existingTasks.findIndex(task => task.id === importedTask.id);
+          if (existingIndex === -1) {
+            updatedTasks.push({ ...importedTask, status: 'imported' });
+          }
+        });
+        
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+      }
+    } catch (error) {
+      // Handle clipboard read error
+      console.error('Error reading from clipboard:', error);
     }
   };
+  
+
+
+
+  // const handleImportClick = () => {
+  //   const dataFromClipboard = clipboardData;
+  //   if (dataFromClipboard) {
+  //     const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  //     const importedTasks = JSON.parse(dataFromClipboard);
+  //     //console.log(JSON.parse(importedTasks))
+  //     //console.log(importedTasks);
+
+  //     const updatedTasks = [...existingTasks];
+
+  //     importedTasks.forEach(importedTask => {
+  //       const existingIndex = existingTasks.findIndex(task => task.id === importedTask.id);
+  //       if (existingIndex === -1) {
+  //         updatedTasks.push({ ...importedTask, status: 'imported' });
+  //       }
+  //     });
+
+  //     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  //   }
+  // };
 
   const handleClearCompletedClick = () => {
     const currentDate = new Date().toLocaleDateString('uk-UA').split('/')[0];

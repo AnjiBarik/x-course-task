@@ -39,3 +39,17 @@
     }
    
   
+
+    Nav, Menu {
+      flex-direction: column;
+    }
+    
+@media (max-width: 640px) {
+  Header, Nav, Menu {
+    flex-direction: column;
+  }
+}
+
+.Menu {
+  margin: 10px 10px 10px 10px;
+}
