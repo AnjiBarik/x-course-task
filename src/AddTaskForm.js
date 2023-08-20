@@ -68,7 +68,7 @@ function AddTaskForm({ onClose, editedTask }) {
         <br/>
         <button type="submit">Save</button> 
         <button onClick={onClose}>Cancel</button>
-        <button type="button" onClick={handleQuickTask}>Quick Task</button>
+        <button type="button" onClick={handleQuickTask}>quick Note</button>
       </form>
     </div>
   );

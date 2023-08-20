@@ -58,10 +58,10 @@ function Tasks() {
   return (
     <div className="tasks">
       <h2>Tasks for {selectedDate}</h2>
-      <button onClick={handleAddTaskClick}>Add Task</button>
-      <button onClick={() => setOnlyCurrent(!onlyCurrent)}>
+      <button className='addtask' onClick={handleAddTaskClick}>Add Task</button>
+      {/* <button onClick={() => setOnlyCurrent(!onlyCurrent)}>
         {onlyCurrent ? 'Show All' : 'Only Current'}
-      </button>
+      </button> */}
 
       {sortedTasks.filter(filterCurrentTasks).map((task) => (
         <Task key={task.id} task={task} />

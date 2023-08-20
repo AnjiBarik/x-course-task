@@ -7,7 +7,14 @@ const TasksContext = createContext();
 export const TasksProvider = ({ children }) => {
   // State for tasks and next task id
   const [tasks, setTasks] = useState([]);
-  const [nextId, setNextId] = useState(1);
+  //const [nextId, setNextId] = useState(1);
+  // Initialize nextId based on existing tasks
+  const [nextId, setNextId] = useState(() => {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    // Find the maximum id from existing tasks and add 1
+    const maxId = storedTasks.reduce((max, task) => (task.id > max ? task.id : max), 0);
+    return maxId + 1;
+  });
 
   // State for selected date
   const [selectedDate, setSelectedDate] = useState('');

@@ -87,11 +87,11 @@ const handleExportClick = () => {
         <button className="Menu" onClick={handleImportClick}>Import from Clipboard</button>
         <br></br>
         {/* Date picker for selecting date */}
-        <input
+        {/* <input
           type="date"
-          defaultValue={new Date().toISOString().split('T')[0]}
+          defaultValue={new Date().toLocaleDateString('uk-UA').split('/')[0]}
           onChange={(e) => selectDate(e.target.value)}
-        />
+        /> */}
         {/* Button to clear completed tasks */}
         <button className="Menu" onClick={handleClearCompletedClick}>Clear Completed</button>
       </nav>
