@@ -6,10 +6,6 @@ function Header() {
   const [clipboardData, setClipboardData] = useState('');
   const { selectDate } = useTasks();
 
-//   useEffect(() => {
-//   localStorage.removeItem('selectedDate');
-// }, []);
-
 const handleExportClick = () => {
     const dataFromLocalStorage = localStorage.getItem('tasks');
     setClipboardData(dataFromLocalStorage);
@@ -22,6 +18,30 @@ const handleExportClick = () => {
     document.body.removeChild(dummy);
   };
 
+  // const handleImportClick = async () => {
+  //   try {
+  //     const clipboardText = await navigator.clipboard.readText();
+  //     const importedTasks = JSON.parse(clipboardText);
+  
+  //     if (importedTasks && Array.isArray(importedTasks)) {
+  //       const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  //       const updatedTasks = [...existingTasks];
+  
+  //       importedTasks.forEach(importedTask => {
+  //         const existingIndex = existingTasks.findIndex(task => task.id === importedTask.id);
+  //         if (existingIndex === -1) {
+  //           updatedTasks.push({ ...importedTask, status: 'imported' });
+  //         }
+  //       });
+        
+  //       localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  //     }
+  //   } catch (error) {
+  //     // Handle clipboard read error
+  //     console.error('Error reading from clipboard:', error);
+  //   }
+  // };
+  
   const handleImportClick = async () => {
     try {
       const clipboardText = await navigator.clipboard.readText();
@@ -32,12 +52,12 @@ const handleExportClick = () => {
         const updatedTasks = [...existingTasks];
   
         importedTasks.forEach(importedTask => {
-          const existingIndex = existingTasks.findIndex(task => task.id === importedTask.id);
-          if (existingIndex === -1) {
-            updatedTasks.push({ ...importedTask, status: 'imported' });
+          const existingTask = existingTasks.find(task => task.id === importedTask.id);
+          if (!existingTask) {
+            updatedTasks.push(importedTask);
           }
         });
-        
+  
         localStorage.setItem('tasks', JSON.stringify(updatedTasks));
       }
     } catch (error) {
@@ -46,30 +66,6 @@ const handleExportClick = () => {
     }
   };
   
-
-
-
-  // const handleImportClick = () => {
-  //   const dataFromClipboard = clipboardData;
-  //   if (dataFromClipboard) {
-  //     const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  //     const importedTasks = JSON.parse(dataFromClipboard);
-  //     //console.log(JSON.parse(importedTasks))
-  //     //console.log(importedTasks);
-
-  //     const updatedTasks = [...existingTasks];
-
-  //     importedTasks.forEach(importedTask => {
-  //       const existingIndex = existingTasks.findIndex(task => task.id === importedTask.id);
-  //       if (existingIndex === -1) {
-  //         updatedTasks.push({ ...importedTask, status: 'imported' });
-  //       }
-  //     });
-
-  //     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-  //   }
-  // };
-
   const handleClearCompletedClick = () => {
     const currentDate = new Date().toLocaleDateString('uk-UA').split('/')[0];
     selectDate(currentDate);
@@ -86,12 +82,6 @@ const handleExportClick = () => {
         <button className="Menu" onClick={handleExportClick}>Export to Clipboard</button>
         <button className="Menu" onClick={handleImportClick}>Import from Clipboard</button>
         <br></br>
-        {/* Date picker for selecting date */}
-        {/* <input
-          type="date"
-          defaultValue={new Date().toLocaleDateString('uk-UA').split('/')[0]}
-          onChange={(e) => selectDate(e.target.value)}
-        /> */}
         {/* Button to clear completed tasks */}
         <button className="Menu" onClick={handleClearCompletedClick}>Clear Completed</button>
       </nav>

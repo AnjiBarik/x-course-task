@@ -39,7 +39,7 @@ function Tasks() {
     if (task.status === 'quick-note') {
       return true;
     }
-    return !onlyCurrent || (task.date === selectedDate);
+      return !onlyCurrent || (task.date === selectedDate);    
   };
 
   const handleAddTaskClick = () => {
