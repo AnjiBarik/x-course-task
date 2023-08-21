@@ -3,7 +3,7 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
-    /* margin: 10px 0; */
+    margin: 10px 0;
   }
   
   .past-due {
@@ -136,4 +136,9 @@
     color: #d4fadc;
     font-size: 18px;
     padding: 5px;
+  }
+
+  .task.quick-note{
+    background-color: rgb(228, 228, 217);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   }

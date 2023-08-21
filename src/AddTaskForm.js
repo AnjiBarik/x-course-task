@@ -89,7 +89,7 @@ function AddTaskForm({ onClose, editedTask }) {
       <form onSubmit={handleSubmit}>
         <label>
           Date: {selectedDate} 
-          <button type="button" onClick={() => setShowDatePicker(true)}>⏬</button>
+          <button type="button" onClick={() => setShowDatePicker(true)}>🔽</button>
           <br/>
           {showDatePicker && (
             <input

@@ -15,12 +15,15 @@ function Tasks() {
     if (a.status !== 'quick-note' && b.status === 'quick-note') {
       return 1;
     }
-    if (a.date === selectedDate && b.date !== selectedDate) {
+  
+    
+    if (a.date !== selectedDate && b.date === selectedDate) {
       return -1;
     }
-    if (a.date !== selectedDate && b.date === selectedDate) {
+    if (a.date === selectedDate && b.date !== selectedDate) {
       return 1;
     }
+  
     if (a.priority === 'important' && b.priority !== 'important') {
       return -1;
     }
@@ -30,8 +33,18 @@ function Tasks() {
     if (a.date === selectedDate && b.date === selectedDate) {
       return 0;
     }
+  
+    
+    if (a.date < selectedDate && b.date >= selectedDate) {
+      return -1;
+    }
+    if (a.date >= selectedDate && b.date < selectedDate) {
+      return 1;
+    }
+  
     return 0;
   };
+  
 
   const sortedTasks = [...tasks].sort(sortTasks);
 
@@ -39,8 +52,28 @@ function Tasks() {
     if (task.status === 'quick-note') {
       return true;
     }
-      return !onlyCurrent || (task.date === selectedDate);    
+    
+    if (onlyCurrent) {
+      return task.date === selectedDate ;
+    }
+    
+    if (!onlyCurrent) {
+      if (task.status === 'completed') {
+        return false; 
+      }
+      return task.date < selectedDate;
+    }
+    
+    return true;
   };
+  
+
+  // const filterCurrentTasks = (task) => {
+  //   if (task.status === 'quick-note') {
+  //     return true;
+  //   }
+  //     return !onlyCurrent || (task.date === selectedDate);    
+  // };
 
   const handleAddTaskClick = () => {
     setShowAddForm(true);
@@ -59,9 +92,9 @@ function Tasks() {
     <div className="tasks">
       <h2>Tasks for {selectedDate}</h2>
       <button className='addtask' onClick={handleAddTaskClick}>Add Task</button>
-      {/* <button onClick={() => setOnlyCurrent(!onlyCurrent)}>
-        {onlyCurrent ? 'Show All' : 'Only Current'}
-      </button> */}
+      <button onClick={() => setOnlyCurrent(!onlyCurrent)}>
+        {onlyCurrent ? 'Show Overdue' : 'Show Current'}
+      </button>
 
       {sortedTasks.filter(filterCurrentTasks).map((task) => (
         <Task key={task.id} task={task} />
