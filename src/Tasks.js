@@ -8,6 +8,12 @@ function Tasks() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [onlyCurrent, setOnlyCurrent] = useState(true);
 
+  const [searchText, setSearchText] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchMode, setSearchMode] = useState(false);
+
+
+
   const sortTasks = (a, b) => {
     if (a.status === 'quick-note' && b.status !== 'quick-note') {
       return -1;
@@ -88,17 +94,65 @@ function Tasks() {
     setShowAddForm(false);
   };
 
+  const handleSearch = () => {
+    if (searchText) {
+      const results = sortedTasks.filter((task) =>
+        task.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setSearchResults(results);
+      setSearchMode(true);
+    } else {
+      setSearchResults([]);
+      setSearchMode(false);
+    }
+  };
+
+  const handleCancelSearch = () => {
+    setSearchText('');
+    setSearchResults([]);
+    setSearchMode(false);
+  };
+
+
   return (
     <div className="tasks">
       <h2>Tasks for {selectedDate}</h2>
+      
+      
+      
       <button className='addtask' onClick={handleAddTaskClick}>Add Task</button>
       <button onClick={() => setOnlyCurrent(!onlyCurrent)}>
         {onlyCurrent ? 'Show Overdue' : 'Show Current'}
       </button>
 
-      {sortedTasks.filter(filterCurrentTasks).map((task) => (
+      {/* <div> */}
+        <input
+          type="text"
+          placeholder="Search task"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+        {searchMode && (
+          <button onClick={handleCancelSearch}>Cancel Search</button>
+        )}
+      {/* </div> */}
+      {searchMode ? (
+        searchResults.map((task) => (
+          <Task key={task.id} task={task} />
+        ))
+      ) : (
+        sortedTasks.filter(filterCurrentTasks).map((task) => (
+          <Task key={task.id} task={task} />
+        ))
+      )}
+
+
+
+
+      {/* {sortedTasks.filter(filterCurrentTasks).map((task) => (
         <Task key={task.id} task={task} />
-      ))}
+      ))} */}
 
       {showAddForm && (
         <div className="modal">

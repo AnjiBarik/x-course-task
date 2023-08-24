@@ -5,19 +5,51 @@ const TasksContext = createContext();
 
 // Create a provider component for tasks
 export const TasksProvider = ({ children }) => {
-  // State for tasks and next task id
-  const [tasks, setTasks] = useState([]);
-  //const [nextId, setNextId] = useState(1);
-  // Initialize nextId based on existing tasks
-  const [nextId, setNextId] = useState(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    // Find the maximum id from existing tasks and add 1
-    const maxId = storedTasks.reduce((max, task) => (task.id > max ? task.id : max), 0);
-    return maxId + 1;
-  });
+ 
+// State for tasks
+const [tasks, setTasks] = useState([]);
 
-  // State for selected date
-  const [selectedDate, setSelectedDate] = useState('');
+// State for selected date
+const [selectedDate, setSelectedDate] = useState('');
+
+// Function to get the maximum id from local storage or tasks
+const getMaxId = () => {
+  const storedMaxId = localStorage.getItem('maxId');
+  const maxIdFromTasks = tasks.reduce((max, task) => (task.id > max ? task.id : max), 0);
+  return storedMaxId ? Math.max(parseInt(storedMaxId, 10), maxIdFromTasks) : maxIdFromTasks;
+};
+
+// State for next task id
+// const [nextId, setNextId] = useState(getMaxId());
+
+// Function to set the maximum id in local storage
+const setMaxIdInLocalStorage = (maxId) => {
+  localStorage.setItem('maxId', maxId.toString());
+};
+
+// Function to increment and return the next task id
+const getNextId = () => {
+  const maxId = getMaxId();
+  const newId = maxId + 1;
+  setMaxIdInLocalStorage(newId);
+  return newId;
+};
+
+
+ 
+  // // State for tasks and next task id
+  // const [tasks, setTasks] = useState([]);
+  // //const [nextId, setNextId] = useState(1);
+  // // Initialize nextId based on existing tasks
+  // const [nextId, setNextId] = useState(() => {
+  //   const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  //   // Find the maximum id from existing tasks and add 1
+  //   const maxId = storedTasks.reduce((max, task) => (task.id > max ? task.id : max), 0);
+  //   return maxId + 1;
+  // });
+
+  // // State for selected date
+  // const [selectedDate, setSelectedDate] = useState('');
 
   // Load tasks from localStorage on component mount
   useEffect(() => {
@@ -32,8 +64,10 @@ export const TasksProvider = ({ children }) => {
 
   // Function to add a task with an incremented id
   const addTask = (newTask) => {
-    setTasks([...tasks, { ...newTask, id: nextId }]);
-    setNextId(nextId + 1);
+    const newId = getNextId();
+    setTasks([...tasks, { ...newTask, id: newId }]);
+   // setTasks([...tasks, { ...newTask, id: nextId }]);
+   // setNextId(nextId + 1);
   };
 
   // Function to update a task by id
