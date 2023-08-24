@@ -18,30 +18,6 @@ const handleExportClick = () => {
     document.body.removeChild(dummy);
   };
 
-  // const handleImportClick = async () => {
-  //   try {
-  //     const clipboardText = await navigator.clipboard.readText();
-  //     const importedTasks = JSON.parse(clipboardText);
-  
-  //     if (importedTasks && Array.isArray(importedTasks)) {
-  //       const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  //       const updatedTasks = [...existingTasks];
-  
-  //       importedTasks.forEach(importedTask => {
-  //         const existingIndex = existingTasks.findIndex(task => task.id === importedTask.id);
-  //         if (existingIndex === -1) {
-  //           updatedTasks.push({ ...importedTask, status: 'imported' });
-  //         }
-  //       });
-        
-  //       localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-  //     }
-  //   } catch (error) {
-  //     // Handle clipboard read error
-  //     console.error('Error reading from clipboard:', error);
-  //   }
-  // };
-  
   const handleImportClick = async () => {
     try {
       const clipboardText = await navigator.clipboard.readText();

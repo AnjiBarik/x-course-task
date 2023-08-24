@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useTasks } from './TasksContext';
@@ -6,30 +6,6 @@ import { useTasks } from './TasksContext';
 function CalendarComponent() {
   const { selectDate } = useTasks();
   const [selectedDate, setSelectedDate] = useState(new Date());
-
-  // useEffect(() => {
-  //   const storedDate = localStorage.getItem('selectedDate');
-  //   if (storedDate) {
-  //     setSelectedDate(new Date(storedDate));
-  //     selectDate(storedDate);
-  //   }
-  // }, [selectDate]);
-
-
-  // useEffect(() => {
-  //   localStorage.removeItem('selectedDate');
-  //   try {
-  //     const storedDate = localStorage.getItem('selectedDate');
-  //     if (storedDate) {
-  //       setSelectedDate(new Date(storedDate));
-  //       selectDate(storedDate);
-  //     }
-  //   } catch (error) {
-  //     const currentDate = new Date();
-  //     setSelectedDate(currentDate);
-  //     selectDate(currentDate.toISOString());
-  //   }
-  // }, [selectDate]);
 
   const handleDateChange = (date) => {
     const formattedDate = date.toLocaleDateString('uk-UA').split('/')[0];
